@@ -2,9 +2,11 @@
 const todoInput = document.querySelector(".todo-input");
 const todoButton = document.querySelector(".todo-button");
 const todoList = document.querySelector(".todo-list");
+const deleteButton = document.querySelector(".trash-btn");
 
 //events
 todoButton.addEventListener("click", addTodo);
+deleteButton.addEventListener("click", removeTodo);
 
 //functions
 function addTodo(event) {
@@ -16,9 +18,10 @@ function addTodo(event) {
   todoDiv.classList.add("todo");
   //create li element
   const newTodo = document.createElement("li");
-  newTodo.innerText = "Hello";
+  newTodo.innerText = todoInput.value;
   newTodo.classList.add("todo-item");
   todoDiv.appendChild(newTodo);
+  todoInput.value = "";
   //completed button element
   const completedButton = document.createElement("button");
   completedButton.classList.add("complete-btn");
@@ -31,4 +34,9 @@ function addTodo(event) {
   todoDiv.appendChild(trashButton);
   //append to list
   todoList.appendChild(todoDiv);
+}
+
+//remove todo funtion
+function removeTodo() {
+  console.log("deleted");
 }
