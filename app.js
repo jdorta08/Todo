@@ -2,11 +2,10 @@
 const todoInput = document.querySelector(".todo-input");
 const todoButton = document.querySelector(".todo-button");
 const todoList = document.querySelector(".todo-list");
-const deleteButton = document.querySelector(".trash-btn");
 
 //events
 todoButton.addEventListener("click", addTodo);
-deleteButton.addEventListener("click", removeTodo);
+todoList.addEventListener("click", removeTodo);
 
 //functions
 function addTodo(event) {
@@ -37,6 +36,23 @@ function addTodo(event) {
 }
 
 //remove todo funtion
-function removeTodo() {
-  console.log("deleted");
+function removeTodo(e) {
+  //prevent event bubbling
+
+  const item = e.target;
+  //delete todo
+  if (item.classList[0] === "trash-btn") {
+    const todo = item.parentElement;
+    todo.remove();
+  }
+
+  if (item.classList[0] === "complete-btn") {
+    const todo = item.parentElement;
+    todo.classList.add("checked");
+    todo.innerText = "Task Completed";
+    const trashButton = document.createElement("button");
+    trashButton.classList.add("trash-btn");
+    trashButton.innerHTML = '<i class="fas fa-trash"></i>';
+    todo.appendChild(trashButton);
+  }
 }

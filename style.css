@@ -54,7 +54,8 @@ form button:hover {
   min-width: 30%;
 }
 
-.todo {
+.todo,
+.checked {
   margin: 0.5rem;
   background: white;
   color: black;
@@ -86,4 +87,16 @@ form button:hover {
 
 .todo-item {
   padding: 0rem 0.5rem;
+}
+
+.fa-trash,
+.fa-check {
+  pointer-events: none;
+}
+
+.checked {
+  background: rgb(75, 230, 75);
+  color: white;
+  transition: all 0.5s ease;
+  padding: 1rem;
 }
