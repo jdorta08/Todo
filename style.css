@@ -100,7 +100,7 @@ form button:hover {
   background: rgb(75, 230, 75);
   color: white;
   transition: all 0.5s ease;
-  padding: 1rem;
+  padding-left: 15px;
 }
 
 .fall {
