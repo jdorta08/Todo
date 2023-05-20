@@ -43,7 +43,12 @@ function removeTodo(e) {
   //delete todo
   if (item.classList[0] === "trash-btn") {
     const todo = item.parentElement;
-    todo.remove();
+    //Animation first, otherwise simply delete the element
+    todo.classList.add("fall");
+    //here we added an event listener to wait until the transition completes
+    todo.addEventListener("transitionend", function () {
+      todo.remove();
+    });
   }
 
   if (item.classList[0] === "complete-btn") {

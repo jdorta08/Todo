@@ -64,7 +64,9 @@ form button:hover {
   justify-content: space-between;
   align-items: center;
 }
-
+.todo {
+  transition: all 0.5s ease;
+}
 .todo li {
   flex: 1;
 }
@@ -99,4 +101,9 @@ form button:hover {
   color: white;
   transition: all 0.5s ease;
   padding: 1rem;
+}
+
+.fall {
+  transform: translateY(8rem) rotateZ(20deg);
+  opacity: 0;
 }
