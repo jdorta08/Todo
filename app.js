@@ -2,10 +2,12 @@
 const todoInput = document.querySelector(".todo-input");
 const todoButton = document.querySelector(".todo-button");
 const todoList = document.querySelector(".todo-list");
+const filterOption = document.querySelector(".filter-todo");
 
 //events
 todoButton.addEventListener("click", addTodo);
 todoList.addEventListener("click", removeTodo);
+filterOption.addEventListener("change", filterTodo);
 
 //functions
 function addTodo(event) {
@@ -60,4 +62,30 @@ function removeTodo(e) {
     trashButton.innerHTML = '<i class="fas fa-trash"></i>';
     todo.appendChild(trashButton);
   }
+}
+
+function filterTodo(e) {
+  const todos = todoList.childNodes;
+  console.log(todos);
+  todos.forEach(function (todo) {
+    switch (e.target.value) {
+      case "all":
+        todo.style.display = "flex";
+        break;
+      case "completed":
+        if (todo.classList.contains("checked")) {
+          todo.style.display = "flex";
+        } else {
+          todo.style.display = "none";
+        }
+        break;
+      case "uncompleted":
+        if (!todo.classList.contains("checked")) {
+          todo.style.display = "flex";
+        } else {
+          todo.style.display = "none";
+        }
+        break;
+    }
+  });
 }
